@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3724AF9A-1765-4FBD-B4BF-1C7A89CF2510}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KingmakerREPL</RootNamespace>
+    <AssemblyName>KingmakerREPL</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\KingmakerREPL\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Install|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>C:\Program Files %28x86%29\Steam\steamapps\common\Pathfinder Kingmaker\Mods\KingmakerREPL\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>portable</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony12">
+      <HintPath>libs\0Harmony12.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>libs\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>libs\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\Mono.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>libs\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>libs\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>libs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>libs\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>libs\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>libs\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>libs\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>libs\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConsoleManager.cs" />
+    <Compile Include="ModMain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\AssetHelper.cs">
+      <Link>Scripts\AssetHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Completions\CommandCompletion.cs">
+      <Link>Scripts\Completions\CommandCompletion.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Completions\GameObjectNameCompletion.cs">
+      <Link>Scripts\Completions\GameObjectNameCompletion.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Completions\GameObjectPathCompletion.cs">
+      <Link>Scripts\Completions\GameObjectPathCompletion.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Completions\GlobalClassCompletion.cs">
+      <Link>Scripts\Completions\GlobalClassCompletion.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Completions\MonoCompletion.cs">
+      <Link>Scripts\Completions\MonoCompletion.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Completions\RuntimeCommandCompletion.cs">
+      <Link>Scripts\Completions\RuntimeCommandCompletion.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Command.cs">
+      <Link>Scripts\Core\Command.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Completion.cs">
+      <Link>Scripts\Core\Completion.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\CompletionPlugin.cs">
+      <Link>Scripts\Core\CompletionPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Evaluator.cs">
+      <Link>Scripts\Core\Evaluator.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\History.cs">
+      <Link>Scripts\Core\History.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Inspector.cs">
+      <Link>Scripts\Core\Inspector.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Key.cs">
+      <Link>Scripts\Core\Key.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Log.cs">
+      <Link>Scripts\Core\Log.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Main.cs">
+      <Link>Scripts\Core\Main.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Mono.cs">
+      <Link>Scripts\Core\Mono.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Parameters.cs">
+      <Link>Scripts\Core\Parameters.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\RuntimeCommand.cs">
+      <Link>Scripts\Core\RuntimeCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Core\Utility.cs">
+      <Link>Scripts\Core\Utility.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\BoolFieldItem.cs">
+      <Link>Scripts\Gui\FieldItems\BoolFieldItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\EnumFieldItem.cs">
+      <Link>Scripts\Gui\FieldItems\EnumFieldItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\FieldItem.cs">
+      <Link>Scripts\Gui\FieldItems\FieldItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\GameObjectComponentItem.cs">
+      <Link>Scripts\Gui\FieldItems\GameObjectComponentItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\ReadonlyFieldItem.cs">
+      <Link>Scripts\Gui\FieldItems\ReadonlyFieldItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\SingleFieldItem.cs">
+      <Link>Scripts\Gui\FieldItems\SingleFieldItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\Vector2FieldItem.cs">
+      <Link>Scripts\Gui\FieldItems\Vector2FieldItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\Vector3FieldItem.cs">
+      <Link>Scripts\Gui\FieldItems\Vector3FieldItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\FieldItems\Vector4FieldItem.cs">
+      <Link>Scripts\Gui\FieldItems\Vector4FieldItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\OutputItems\ComponentItem.cs">
+      <Link>Scripts\Gui\OutputItems\ComponentItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\OutputItems\GameObjectItem.cs">
+      <Link>Scripts\Gui\OutputItems\GameObjectItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\OutputItems\LogItem.cs">
+      <Link>Scripts\Gui\OutputItems\LogItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\OutputItems\ResultItem.cs">
+      <Link>Scripts\Gui\OutputItems\ResultItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\AnnotationView.cs">
+      <Link>Scripts\Gui\Window\AnnotationView.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\CommandInputField.cs">
+      <Link>Scripts\Gui\Window\CommandInputField.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\CommandView.cs">
+      <Link>Scripts\Gui\Window\CommandView.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\CompletionItem.cs">
+      <Link>Scripts\Gui\Window\CompletionItem.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\CompletionView.cs">
+      <Link>Scripts\Gui\Window\CompletionView.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\EnterButton.cs">
+      <Link>Scripts\Gui\Window\EnterButton.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\KeyBinding.cs">
+      <Link>Scripts\Gui\Window\KeyBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\OutputView.cs">
+      <Link>Scripts\Gui\Window\OutputView.cs</Link>
+    </Compile>
+    <Compile Include="..\uREPL\Assets\uREPL\Scripts\Gui\Window\Window.cs">
+      <Link>Scripts\Gui\Window\Window.cs</Link>
+    </Compile>
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="info.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AssetBundles/urepl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Repository.json" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
