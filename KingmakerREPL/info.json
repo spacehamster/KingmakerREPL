@@ -1,0 +1,10 @@
+{
+  "Id": "KingmakerREPL",
+  "DisplayName": "KingmakerREPL",
+  "Author": "spacehamster",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.12.0",
+  "Requirements": [],
+  "AssemblyName": "KingmakerREPL.dll",
+  "EntryMethod": "KingmakerREPL.ModMain.Load"
+}
