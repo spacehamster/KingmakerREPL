@@ -1,5 +1,6 @@
 ﻿using Harmony12;
 using Kingmaker;
+using Kingmaker.UI.SettingsUI;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace KingmakerREPL
     class ReplManager : MonoBehaviour
     {
         GameObject urepl;
+        KeyCode[] primaryCameraKeys = new KeyCode[4] { KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None };
+        KeyCode[] secondaryCameraKeys = new KeyCode[4] { KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None };
         void Start()
         {
         }
@@ -36,7 +39,40 @@ namespace KingmakerREPL
                     ModMain.DebugLog("Error Deserializing, missing editor");
                     main.editor = new EditorParameters();
                 }
+                uREPL.Mono.Run("using Kingmaker;");
                 return;
+            }
+        }
+        void DisableCamera()
+        {
+            var cameraKeys = new SettingsEntityKeybind[]
+            {
+                SettingsRoot.Instance.CameraUp,
+                SettingsRoot.Instance.CameraDown,
+                SettingsRoot.Instance.CameraLeft,
+                SettingsRoot.Instance.CameraRight
+            };
+            for(int i = 0; i < cameraKeys.Length; i++)
+            {
+                primaryCameraKeys[i] = cameraKeys[i].GetBinding(0).Key;
+                secondaryCameraKeys[i] = cameraKeys[i].GetBinding(1).Key;
+                cameraKeys[i].GetBinding(0).Key = KeyCode.None;
+                cameraKeys[i].GetBinding(1).Key = KeyCode.None;
+            }
+        }
+        void EnableCamera()
+        {
+            var cameraKeys = new SettingsEntityKeybind[]
+            {
+                SettingsRoot.Instance.CameraUp,
+                SettingsRoot.Instance.CameraDown,
+                SettingsRoot.Instance.CameraLeft,
+                SettingsRoot.Instance.CameraRight
+            };
+            for (int i = 0; i < cameraKeys.Length; i++)
+            {
+                cameraKeys[i].GetBinding(0).Key = primaryCameraKeys[i];
+                cameraKeys[i].GetBinding(1).Key = secondaryCameraKeys[i];
             }
         }
         void Update()
@@ -50,17 +86,21 @@ namespace KingmakerREPL
                     if (urepl == null)
                     {
                         Init();
+                        Game.Instance.Keyboard.Disabled.SetValue(true);
+                        DisableCamera();
                         return;
                     }
                     var window = urepl.GetComponent<Window>();
                     if (window.isOpen)
                     {
                         Game.Instance.Keyboard.Disabled.SetValue(false);
+                        EnableCamera();
                         window.Close();
                     }
                     else
                     {
                         Game.Instance.Keyboard.Disabled.SetValue(true);
+                        DisableCamera();
                         window.Open();
                     }
                 }
